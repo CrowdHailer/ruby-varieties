@@ -13,7 +13,24 @@ class Array
 		recursive_inject(init, &block)
 	end
 
-	def min_recursive_inject init=0, &block
-		(element = shift) ? min_recursive_inject((yield init, element), &block) : init
+	def min_inject init=0, &block
+		(element = shift) ? min_inject((yield init, element), &block) : init
+	end
+
+	def index_inject mem=0, &block
+		(0..count-1).to_a.each do |i|
+			element = self[i]
+			mem = block.call mem, element
+		end
+		mem
+	end
+
+	def while_inject mem=0
+		i = 0
+		while i < length
+			mem = yield mem, self[i]
+			i += 1
+		end
+		mem
 	end
 end

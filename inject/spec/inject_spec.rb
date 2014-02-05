@@ -23,11 +23,31 @@ describe 'Array inject method' do
 
 	context 'minimal recursive' do
 		it 'should create a total from all elements in an array and block' do
-			expect(array.min_recursive_inject { |mem, var| mem + var }).to eq(15)
+			expect(array.min_inject { |mem, var| mem + var }).to eq(15)
 		end
 
 		it 'should take a starting value' do
-			expect(array.min_recursive_inject(5) { |mem, var| mem + var }).to eq(20)
+			expect(array.min_inject(5) { |mem, var| mem + var }).to eq(20)
+		end
+	end
+
+	context 'counting index' do
+		it 'should create a total from all elements in an array and block' do
+			expect(array.index_inject { |mem, var| mem + var }).to eq(15)
+		end
+
+		it 'should take a starting value' do
+			expect(array.index_inject(5) { |mem, var| mem + var }).to eq(20)
+		end
+	end
+
+	context 'while' do
+		it 'should create a total from all elements in an array and block' do
+			expect(array.while_inject { |mem, var| mem + var }).to eq(15)
+		end
+
+		it 'should take a starting value' do
+			expect(array.while_inject(5) { |mem, var| mem + var }).to eq(20)
 		end
 	end
 end
