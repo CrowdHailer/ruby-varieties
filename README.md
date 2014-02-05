@@ -9,7 +9,7 @@ Ruby in particular presents the option to solve simple problems many ways. To ke
 Contents
 --------
 
--custom inject methods
--creating and array of even numbers
+- custom inject methods
+- creating and array of even numbers
 
 TO BE EXPANDED
